@@ -9,4 +9,9 @@ footer {
 }
 
 .footer-content {
+  padding: 50px 0;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  gap: 20px;
 }
