@@ -99,7 +99,7 @@
             </button>
           </div>
 
-          <div id="events-container" class="list-view">
+          <div id="events-container" class="list-view" data-category="all">
             <!-- Events will be dynamically added here -->
             <div class="empty-state">
               <i class="fas fa-calendar-plus fa-3x"></i>
@@ -108,6 +108,7 @@
           </div>
         </section>
 
+        <!-- Add events -->
         <section class="event-form-section">
           <h2>Add New Event</h2>
           <form id="eventForm">
@@ -206,67 +207,6 @@
       </div>
       <p>&copy; 2025 EventFlow. All rights reserved.</p>
     </footer>
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-      import {
-        getAuth,
-        signOut,
-      } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-      import {
-        getDatabase,
-        ref,
-        push,
-        set,
-        onValue,
-      } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
-
-      const firebaseConfig = {
-        apiKey: "AIzaSyCjzNKN-4PhJ7haNaSEfrdcamjcKmXTHf4",
-        authDomain: "eventlogin-75b0b.firebaseapp.com",
-        databaseURL: "https://eventlogin-75b0b-default-rtdb.firebaseio.com/",
-        projectId: "eventlogin-75b0b",
-        storageBucket: "eventlogin-75b0b.appspot.com",
-        messagingSenderId: "907029754351",
-        appId: "1:907029754351:web:bc6bdaf1d231b0d3a2061a",
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-      const db = getDatabase(app);
-
-      document.getElementById("logout-btn").addEventListener("click", () => {
-        signOut(auth)
-          .then(() => {
-            window.location.href = "index.html";
-          })
-          .catch((error) => console.error("Error:", error));
-      });
-
-      document.getElementById("eventForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-        const title = document.getElementById("event-title").value;
-        const date = document.getElementById("event-date").value;
-        const description = document.getElementById("event-description").value;
-
-        const newEventRef = push(ref(db, "events"));
-        set(newEventRef, { title, date, description })
-          .then(() => {
-            document.getElementById("eventForm").reset();
-          })
-          .catch((error) => console.error("Error:", error));
-      });
-
-      const eventsContainer = document.getElementById("events-container");
-
-      onValue(ref(db, "events"), (snapshot) => {
-        eventsContainer.innerHTML = "";
-        snapshot.forEach((childSnapshot) => {
-          const event = childSnapshot.val();
-          const eventElement = document.createElement("div");
-          eventElement.textContent = `${event.title} - ${event.date}`;
-          eventsContainer.appendChild(eventElement);
-        });
-      });
-    </script>
+    <script type="module" src="user.js"></script>
   </body>
 </html>

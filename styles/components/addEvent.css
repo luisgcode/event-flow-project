@@ -47,6 +47,15 @@
   margin-top: 2rem;
 }
 
+.form-actions button {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+  border: none;
+}
+
 #cancel-btn {
   background-color: transparent;
   color: var(--text-color);
@@ -56,15 +65,6 @@
 #save-btn {
   background-color: var(--primary-color);
   color: white;
-}
-
-#cancel-btn,
-#save-btn {
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: var(--transition);
-  font-weight: 500;
 }
 
 #cancel-btn:hover {
