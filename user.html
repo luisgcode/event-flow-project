@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Event Flow - Project</title>
+    <title>Event Flow - Login</title>
     <meta name="author" content="Luis Guaiquirian" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,14 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Anaheim:wght@400..800&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-
     <link rel="stylesheet" href="styles/main.css" />
-
-    <meta
-      name="description"
-      content="Luis Guaiquirian is a student web programmer, based in London Ontario, Canada."
-    />
-    <meta name="keywords" content="London Ontario" />
     <script
       src="https://kit.fontawesome.com/54c63f95c5.js"
       crossorigin="anonymous"
@@ -27,39 +20,35 @@
   </head>
   <body>
     <header>
-      <nav class="main-nav" aria-label="Main navigation">
+      <nav class="main-nav">
         <div class="logo">
           <a href="index.html">
             <h1><i class="fas fa-calendar-alt"></i> EventFlow</h1>
           </a>
         </div>
-        <ul class="nav-links">
+        <div class="nav-links">
           <li>
-            <a href="#events" aria-label="View events"
+            <a href="#" aria-label="View events"
               ><i class="fas fa-list"></i> Events</a
             >
           </li>
           <li>
-            <a href="#add-event" aria-label="Add new event"
+            <a href="#" aria-label="Add new event"
               ><i class="fas fa-plus"></i> Add Event</a
             >
           </li>
           <li>
-            <a href="/about.html" aria-label="About this app"
+            <a href="#" aria-label="About this app"
               ><i class="fas fa-info-circle"></i> About</a
             >
           </li>
-          <li>
-            <button id="logout-btn" class="auth-btn" aria-label="Logout">
-              <i class="fas fa-sign-out-alt"></i> Logout
-            </button>
-          </li>
-        </ul>
+          <button id="logout-btn">Logout</button>
+        </div>
       </nav>
     </header>
 
     <main class="container">
-      <section class="about-section">
+      <div class="about-section">
         <h2>Welcome, Luis.</h2>
         <p>
           EventFlow is your personal event management assistant. Add events, set
@@ -69,120 +58,133 @@
           Use the biometric authentication for secure access to your personal
           events.
         </p>
-      </section>
+      </div>
 
-      <section class="calendar-section">
-        <div class="upper-tab">
-          <h2>Your Events</h2>
-          <div class="view-controls">
-            <button
-              id="list-view-btn"
-              class="view-btn active"
-              aria-label="List view"
-            >
-              <i class="fas fa-list"></i>
-            </button>
-            <button id="grid-view-btn" class="view-btn" aria-label="Grid view">
-              <i class="fas fa-th"></i>
-            </button>
+      <div class="events-container">
+        <section class="calendar-section">
+          <div class="upper-tab">
+            <h2>Your Events</h2>
+            <div class="view-controls">
+              <button
+                id="list-view-btn"
+                class="view-btn active"
+                aria-label="List view"
+              >
+                <i class="fas fa-list"></i>
+              </button>
+              <button
+                id="grid-view-btn"
+                class="view-btn"
+                aria-label="Grid view"
+              >
+                <i class="fas fa-th"></i>
+              </button>
+            </div>
           </div>
-        </div>
 
-        <div class="filter-controls">
-          <select aria-label="Filter by category">
-            <option value="all">All Categories</option>
-            <option value="Personal">Personal</option>
-            <option value="Work">Work</option>
-            <option value="Study">Study</option>
-            <option value="Family">Family</option>
-          </select>
-          <input type="date" id="date-filter" aria-label="Filter by date" />
-          <button aria-label="Apply filters">
-            <i class="fas fa-filter"></i> Filter
-          </button>
-          <button aria-label="Clear filters">
-            <i class="fas fa-times"></i> Clear
-          </button>
-        </div>
-
-        <div id="events-container" class="list-view">
-          <div class="empty-state">
-            <i class="fas fa-calendar-plus fa-3x"></i>
-            <p>No events yet. Click the "Add Event" button to get started!</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="event-form-section">
-        <h2>Add New Event</h2>
-        <form id="eventForm">
-          <div class="form-group">
-            <label for="event-title">Event Title</label>
-            <input
-              type="text"
-              id="event-title"
-              placeholder="Enter event title"
-              required
-              aria-required="true"
-            />
-          </div>
-          <div class="form-group">
-            <label for="event-date">Date</label>
-            <input type="date" id="event-date" required aria-required="true" />
-          </div>
-          <div class="form-group">
-            <label for="event-time">Time</label>
-            <input type="time" id="event-time" aria-label="Event time" />
-          </div>
-          <div class="form-group">
-            <label for="event-description">Description</label>
-            <textarea
-              id="event-description"
-              placeholder="Enter event details"
-              rows="3"
-              aria-label="Event description"
-            ></textarea>
-          </div>
-          <div class="form-group">
-            <label for="event-category">Category</label>
-            <select id="event-category" aria-label="Event category">
+          <div class="filter-controls">
+            <select id="category-filter" aria-label="Filter by category">
+              <option value="all">All Categories</option>
               <option value="Personal">Personal</option>
               <option value="Work">Work</option>
               <option value="Study">Study</option>
               <option value="Family">Family</option>
             </select>
-          </div>
-          <div class="form-group">
-            <label for="event-color">Color</label>
-            <input
-              type="color"
-              id="event-color"
-              value="#007bff"
-              aria-label="Event color"
-            />
-          </div>
-          <div class="form-group">
-            <label for="event-reminder">Set Reminder</label>
-            <select id="event-reminder" aria-label="Event reminder">
-              <option value="none">None</option>
-              <option value="15">15 minutes before</option>
-              <option value="30">30 minutes before</option>
-              <option value="60">1 hour before</option>
-              <option value="1440">1 day before</option>
-            </select>
-          </div>
-          <div class="form-actions">
-            <button type="button" id="cancel-btn" aria-label="Cancel">
-              Cancel
+            <input type="date" id="date-filter" aria-label="Filter by date" />
+            <button id="apply-filters" aria-label="Apply filters">
+              <i class="fas fa-filter"></i> Filter
             </button>
-            <button type="submit" id="save-btn" aria-label="Save event">
-              Save Event
+            <button id="clear-filters" aria-label="Clear filters">
+              <i class="fas fa-times"></i> Clear
             </button>
           </div>
-        </form>
-      </section>
+
+          <div id="events-container" class="list-view">
+            <!-- Events will be dynamically added here -->
+            <div class="empty-state">
+              <i class="fas fa-calendar-plus fa-3x"></i>
+              <p>No events yet. Click the "Add Event" button to get started!</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="event-form-section">
+          <h2>Add New Event</h2>
+          <form id="eventForm">
+            <div class="form-group">
+              <label for="event-title">Event Title</label>
+              <input
+                type="text"
+                id="event-title"
+                placeholder="Enter event title"
+                required
+                aria-required="true"
+              />
+            </div>
+            <div class="form-group">
+              <label for="event-date">Date</label>
+              <input
+                type="date"
+                id="event-date"
+                required
+                aria-required="true"
+              />
+            </div>
+            <div class="form-group">
+              <label for="event-time">Time</label>
+              <input type="time" id="event-time" aria-label="Event time" />
+            </div>
+            <div class="form-group">
+              <label for="event-description">Description</label>
+              <textarea
+                id="event-description"
+                placeholder="Enter event details"
+                rows="3"
+                aria-label="Event description"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="event-category">Category</label>
+              <select id="event-category" aria-label="Event category">
+                <option value="Personal">Personal</option>
+                <option value="Work">Work</option>
+                <option value="Study">Study</option>
+                <option value="Family">Family</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="event-color">Color</label>
+              <input
+                type="color"
+                id="event-color"
+                value="#007bff"
+                aria-label="Event color"
+              />
+            </div>
+            <div class="form-group">
+              <label for="event-reminder">Set Reminder</label>
+              <select id="event-reminder" aria-label="Event reminder">
+                <option value="none">None</option>
+                <option value="15">15 minutes before</option>
+                <option value="30">30 minutes before</option>
+                <option value="60">1 hour before</option>
+                <option value="1440">1 day before</option>
+              </select>
+            </div>
+            <div class="form-actions">
+              <button type="button" id="cancel-btn" aria-label="Cancel">
+                Cancel
+              </button>
+              <button type="submit" id="save-btn" aria-label="Save event">
+                Save Event
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
     </main>
 
+    <!-- footer -->
     <footer>
       <div class="footer-content">
         <div class="footer-links">
@@ -204,26 +206,33 @@
       </div>
       <p>&copy; 2025 EventFlow. All rights reserved.</p>
     </footer>
-
-    <!-- Firebase Scripts -->
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
       import {
         getAuth,
         signOut,
       } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+      import {
+        getDatabase,
+        ref,
+        push,
+        set,
+        onValue,
+      } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
       const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_AUTH_DOMAIN",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_STORAGE_BUCKET",
-        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-        appId: "YOUR_APP_ID",
+        apiKey: "AIzaSyCjzNKN-4PhJ7haNaSEfrdcamjcKmXTHf4",
+        authDomain: "eventlogin-75b0b.firebaseapp.com",
+        databaseURL: "https://eventlogin-75b0b-default-rtdb.firebaseio.com/",
+        projectId: "eventlogin-75b0b",
+        storageBucket: "eventlogin-75b0b.appspot.com",
+        messagingSenderId: "907029754351",
+        appId: "1:907029754351:web:bc6bdaf1d231b0d3a2061a",
       };
 
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
+      const db = getDatabase(app);
 
       document.getElementById("logout-btn").addEventListener("click", () => {
         signOut(auth)
@@ -231,6 +240,32 @@
             window.location.href = "index.html";
           })
           .catch((error) => console.error("Error:", error));
+      });
+
+      document.getElementById("eventForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const title = document.getElementById("event-title").value;
+        const date = document.getElementById("event-date").value;
+        const description = document.getElementById("event-description").value;
+
+        const newEventRef = push(ref(db, "events"));
+        set(newEventRef, { title, date, description })
+          .then(() => {
+            document.getElementById("eventForm").reset();
+          })
+          .catch((error) => console.error("Error:", error));
+      });
+
+      const eventsContainer = document.getElementById("events-container");
+
+      onValue(ref(db, "events"), (snapshot) => {
+        eventsContainer.innerHTML = "";
+        snapshot.forEach((childSnapshot) => {
+          const event = childSnapshot.val();
+          const eventElement = document.createElement("div");
+          eventElement.textContent = `${event.title} - ${event.date}`;
+          eventsContainer.appendChild(eventElement);
+        });
       });
     </script>
   </body>
