@@ -55,17 +55,12 @@
             </button>
           </li>
         </ul>
-        <div class="hamburger">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
       </nav>
     </header>
 
     <main class="container">
-      <section id="about" class="about-section">
-        <h2>Welcome to EventFlow</h2>
+      <section class="about-section">
+        <h2>Welcome, Luis.</h2>
         <p>
           EventFlow is your personal event management assistant. Add events, set
           reminders, and stay organized with our intuitive interface.
@@ -76,8 +71,8 @@
         </p>
       </section>
 
-      <section id="events" class="calendar-section">
-        <div class="section-header">
+      <section class="calendar-section">
+        <div class="upper-tab">
           <h2>Your Events</h2>
           <div class="view-controls">
             <button
@@ -92,8 +87,9 @@
             </button>
           </div>
         </div>
+
         <div class="filter-controls">
-          <select id="category-filter" aria-label="Filter by category">
+          <select aria-label="Filter by category">
             <option value="all">All Categories</option>
             <option value="Personal">Personal</option>
             <option value="Work">Work</option>
@@ -101,13 +97,14 @@
             <option value="Family">Family</option>
           </select>
           <input type="date" id="date-filter" aria-label="Filter by date" />
-          <button id="filter-btn" aria-label="Apply filters">
+          <button aria-label="Apply filters">
             <i class="fas fa-filter"></i> Filter
           </button>
-          <button id="clear-filter-btn" aria-label="Clear filters">
+          <button aria-label="Clear filters">
             <i class="fas fa-times"></i> Clear
           </button>
         </div>
+
         <div id="events-container" class="list-view">
           <div class="empty-state">
             <i class="fas fa-calendar-plus fa-3x"></i>
@@ -116,7 +113,7 @@
         </div>
       </section>
 
-      <section id="add-event" class="event-form-section">
+      <section class="event-form-section">
         <h2>Add New Event</h2>
         <form id="eventForm">
           <div class="form-group">
