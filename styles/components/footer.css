@@ -1,0 +1,12 @@
+/* Footer Section */
+footer {
+  background-color: #ffffff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 0;
+}
+
+.footer-content {
+}

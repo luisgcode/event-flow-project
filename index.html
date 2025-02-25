@@ -6,6 +6,13 @@
     <title>Event Flow - Login</title>
     <meta name="author" content="Luis Guaiquirian" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anaheim:wght@400..800&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="styles/main.css" />
     <meta
       name="description"
@@ -50,26 +57,28 @@
     </header>
 
     <main class="container">
-      <h2>Login to EventFlow</h2>
-      <form id="login-form">
-        <div class="input-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" required />
-        </div>
-        <div class="input-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" required />
-        </div>
-        <button type="submit" id="submit-btn" class="auth-btn">Login</button>
-      </form>
-      <button id="register-btn" class="auth-btn">Register</button>
-      <p id="error-message"></p>
+      <div class="form-container">
+        <h2>Login to EventFlow</h2>
+        <form id="login-form">
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required />
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required />
+          </div>
+          <button type="submit" id="submit-btn" class="auth-btn">Login</button>
+          <button id="register-btn" class="auth-btn">Register</button>
+          <p id="error-message"></p>
+        </form>
+      </div>
     </main>
 
     <footer>
       <div class="footer-content">
         <div class="footer-links">
-          <a href="#">Privacy Policy</a>
+          <a href="#"> Policies</a>
           <a href="#">Terms of Service</a>
           <a href="#">Help</a>
         </div>
