@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Event Flow - Login</title>
+    <meta name="author" content="Luis Guaiquirian" />
+
+    <link rel="stylesheet" href="styles/main.css" />
+    <meta
+      name="description"
+      content="Luis Guaiquirian is a student web programmer, based in London Ontario, Canada."
+    />
+    <meta name="keywords" content="London Ontario" />
+    <script
+      src="https://kit.fontawesome.com/54c63f95c5.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Firebase CDN Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="main-nav" aria-label="Main navigation">
+        <div class="logo">
+          <a href="index.html">
+            <h1><i class="fas fa-calendar-alt"></i> EventFlow</h1>
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a href="#login-form" aria-label="View events"
+              ><i class="fas fa-list"></i> Events</a
+            >
+          </li>
+          <li>
+            <a href="#login-form" aria-label="Add new event"
+              ><i class="fas fa-plus"></i> Add Event</a
+            >
+          </li>
+          <li>
+            <a href="#login-form" aria-label="About this app"
+              ><i class="fas fa-info-circle"></i> About</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <h2>Login to EventFlow</h2>
+      <form id="login-form">
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required />
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required />
+        </div>
+        <button type="submit" id="submit-btn" class="auth-btn">Login</button>
+      </form>
+      <button id="register-btn" class="auth-btn">Register</button>
+      <p id="error-message"></p>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Help</a>
+        </div>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </div>
+      </div>
+      <p>&copy; 2025 EventFlow. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+    <!-- Importar Firebase como módulo -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+      // Tu configuración de Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyCjzNKN-4PhJ7haNaSEfrdcamjcKmXTHf4",
+        authDomain: "eventlogin-75b0b.firebaseapp.com",
+        projectId: "eventlogin-75b0b",
+        storageBucket: "eventlogin-75b0b.firebasestorage.app",
+        messagingSenderId: "907029754351",
+        appId: "1:907029754351:web:bc6bdaf1d231b0d3a2061a",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      // Obtener los elementos del DOM
+      const loginForm = document.getElementById("login-form");
+      const registerBtn = document.getElementById("register-btn");
+      const emailInput = document.getElementById("email");
+      const passwordInput = document.getElementById("password");
+      const errorMessage = document.getElementById("error-message");
+
+      // Event listener para el formulario de login
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = emailInput.value;
+        const password = passwordInput.value;
+
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            window.location.href = "user.html";
+          })
+          .catch((error) => {
+            const errorMessageText = error.message;
+            errorMessage.textContent = `Error: ${errorMessageText}`;
+          });
+      });
+
+      // Event listener para el botón de registro
+      registerBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const email = emailInput.value;
+        const password = passwordInput.value;
+
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            window.location.href = "user.html";
+          })
+          .catch((error) => {
+            const errorMessageText = error.message;
+            errorMessage.textContent = `Error: ${errorMessageText}`;
+          });
+      });
+    </script>
+  </body>
+</html>
