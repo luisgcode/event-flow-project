@@ -4,42 +4,38 @@
 
 ## Description
 
-[Current scope - what you know so far. Example:
-This project aims to create a task management system. While the final features are still being defined, the core functionality will help users organize and track their daily tasks.
+EventFlow is an interactive event scheduling web application designed to help users manage their events efficiently. The platform allows users to create, edit, and delete events while offering real-time synchronization using Firebase. Secure authentication, including biometric login, ensures user data protection.
 
-Currently in early development phase.]
+Currently in active development, EventFlow integrates an AI-powered chatbot for scheduling assistance and is being designed with accessibility and responsiveness in mind.
 
 ### Tech Stack (In Progress)
 
 [List what you know you'll use, mark others as under consideration. Example:]
 
-- **Frontend**: React.js
-- **Backend**: Evaluating options (Node.js/Python)
-- **Database**: To be determined
-- **Other Tools**: Git for version control
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Firebase Realtime Database & Firebase Authentication
+- **Database**: Firebase Realtime Database
+- **Other Tools**: GitHub Pages for deployment, BotPress for AI chatbot integration
 
 ### Planned Features
 
-[List what you're currently planning. Example:]
+Event creation with title, date, time, description, and category
 
-- Basic task creation and management
-- More features will be added as development continues
+Secure authentication using Firebase Authentication and biometric login
 
-## Installation
+AI-powered chatbot for event scheduling assistance
 
-```bash
-# Project setup is still being configured
-# Basic setup:
-git clone https://github.com/username/project-name
-cd project-name
-# More instructions will be added as development progresses
-```
+Dynamic event list with edit and delete functionality
+
+User-friendly and responsive UI
+
+WCAG compliance for accessibility
+
+GitHub repository and deployment via GitHub Pages
 
 ## Current Status
 
-🚧 Project is in early development
-⏳ Basic structure being set up
-📋 Features and tech stack being finalized
+🚧 Project is in active development⏳ Core features and UI implementation ongoing📋 Firebase integration and authentication in progress
 
 ## Credits
 
