@@ -40,4 +40,13 @@
   #logout-btn {
     font-size: 12px;
   }
+
+  .logo h1 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 }
