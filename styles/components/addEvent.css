@@ -1,10 +1,16 @@
 /* add event.css */
+
+.events-container {
+  display: flex;
+  flex: 1;
+}
+
 .event-form-section {
   background-color: var(--bg-light);
   padding: 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  max-width: 800px;
+  flex-basis: 40%;
   margin: 0 auto;
   text-align: center;
 }
