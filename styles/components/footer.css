@@ -15,3 +15,11 @@ footer {
   flex-direction: column;
   gap: 20px;
 }
+
+.footer-links {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}

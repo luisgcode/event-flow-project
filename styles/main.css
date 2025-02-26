@@ -78,6 +78,10 @@ li {
   padding: 2rem 1rem;
 }
 
+.container-home {
+  display: flex;
+}
+
 section {
   margin-bottom: 3rem;
 }

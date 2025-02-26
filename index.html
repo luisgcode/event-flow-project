@@ -39,50 +39,78 @@
               <i class="fas fa-plus" aria-hidden="true"></i> Add Event
             </a>
           </li>
-          <li>
-            <a href="#login-form" aria-label="About this app">
-              <i class="fas fa-info-circle" aria-hidden="true"></i> About
-            </a>
-          </li>
         </ul>
       </nav>
     </header>
 
     <main class="container">
-      <section class="form-container">
-        <h2 id="login-heading">Login to EventFlow</h2>
-        <form id="login-form" aria-labelledby="login-heading">
-          <div class="input-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              aria-required="true"
-              autocomplete="email"
-            />
-          </div>
-          <div class="input-group">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              required
-              aria-required="true"
-              autocomplete="current-password"
-            />
-          </div>
-          <button type="submit" id="submit-btn" aria-label="Submit login form">
-            Login
-          </button>
-          <button id="register-btn" aria-label="Register new account">
-            Register
-          </button>
-          <p id="error-message" role="alert" aria-live="polite"></p>
-        </form>
-      </section>
+      <div class="container-home">
+        <section class="about-section">
+          <h2 id="about-heading">About EventFlow</h2>
+          <p>
+            EventFlow is a dynamic event scheduling platform designed to help
+            users manage their events efficiently. Whether you're planning
+            personal activities, work meetings, or social events, EventFlow
+            keeps you organized.
+          </p>
+          <h3>Key Features</h3>
+          <ul>
+            <li>
+              <i class="fas fa-calendar-check" aria-hidden="true"></i>
+              <span>Add and manage events seamlessly.</span>
+            </li>
+            <li>
+              <i class="fas fa-fingerprint" aria-hidden="true"></i>
+              <span>Secure biometric authentication for easy access.</span>
+            </li>
+            <li>
+              <i class="fas fa-edit" aria-hidden="true"></i>
+              <span>Edit and delete events with a simple interface.</span>
+            </li>
+            <li>
+              <i class="fas fa-comments" aria-hidden="true"></i>
+              <span>AI-powered chatbot assistance for scheduling help.</span>
+            </li>
+          </ul>
+        </section>
+        <section class="form-container">
+          <form id="login-form" aria-labelledby="login-heading">
+            <div class="input-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                aria-required="true"
+                autocomplete="email"
+              />
+            </div>
+            <div class="input-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                aria-required="true"
+                autocomplete="current-password"
+              />
+            </div>
+            <button
+              type="submit"
+              id="submit-btn"
+              aria-label="Submit login form"
+            >
+              Login
+            </button>
+            <button id="register-btn" aria-label="Register new account">
+              Register
+            </button>
+            <p id="error-message" role="alert" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
     </main>
 
     <footer>
