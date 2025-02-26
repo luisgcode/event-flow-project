@@ -78,6 +78,12 @@ li {
   display: flex;
 }
 
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
 section {
   margin-bottom: 3rem;
 }
