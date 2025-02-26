@@ -13,6 +13,7 @@ import {
   update,
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
+// Configuración Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCjzNKN-4PhJ7haNaSEfrdcamjcKmXTHf4",
   authDomain: "eventlogin-75b0b.firebaseapp.com",
@@ -23,11 +24,12 @@ const firebaseConfig = {
   appId: "1:907029754351:web:bc6bdaf1d231b0d3a2061a",
 };
 
+// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
 
-// Mostrar mensajes flotantes de retroalimentación
+// Mostrar mensajes flotantes
 function showToast(message, type = "success") {
   const toast = document.createElement("div");
   toast.className = `toast ${type}`;
@@ -48,7 +50,7 @@ document.getElementById("logout-btn").addEventListener("click", () => {
     .catch((error) => console.error("Error:", error));
 });
 
-// Guardar evento en Firebase con feedback visual y textual
+// Guardar evento en Firebase
 document.getElementById("eventForm").addEventListener("submit", (e) => {
   e.preventDefault();
   const title = document.getElementById("event-title").value;
@@ -74,7 +76,7 @@ document.getElementById("eventForm").addEventListener("submit", (e) => {
     .catch((error) => console.error("Error:", error));
 });
 
-// Mostrar eventos en la lista con animaciones
+// Mostrar eventos
 const eventsContainer = document.getElementById("events-container");
 
 onValue(ref(db, "events"), (snapshot) => {
@@ -109,7 +111,7 @@ onValue(ref(db, "events"), (snapshot) => {
 
     eventsContainer.appendChild(eventElement);
 
-    // Animación al agregar un evento
+    // Animación
     eventElement.classList.add("fade-in");
 
     // Eliminar evento con animación
@@ -140,6 +142,7 @@ onValue(ref(db, "events"), (snapshot) => {
               event.description;
             document.getElementById("edit-category").value = event.category;
             document.getElementById("editModal").style.display = "block";
+            document.getElementById("editModal").dataset.id = eventId;
           }
         },
         { onlyOnce: true }
@@ -148,11 +151,24 @@ onValue(ref(db, "events"), (snapshot) => {
   });
 });
 
-// Guardar edición con mensaje de confirmación
+// Cerrar modal de edición
+document.getElementById("closeModal").addEventListener("click", () => {
+  document.getElementById("editModal").style.display = "none";
+});
+
+// Cerrar modal al hacer clic fuera de ella
+window.addEventListener("click", (e) => {
+  const modal = document.getElementById("editModal");
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+// Guardar edición
 document.getElementById("saveEdit").addEventListener("click", () => {
-  const eventId = document
-    .querySelector(".edit-btn[data-id]")
-    .getAttribute("data-id");
+  const modal = document.getElementById("editModal");
+  const eventId = modal.dataset.id;
+
   const updatedEvent = {
     title: document.getElementById("edit-title").value,
     date: document.getElementById("edit-date").value,
@@ -163,7 +179,7 @@ document.getElementById("saveEdit").addEventListener("click", () => {
 
   update(ref(db, `events/${eventId}`), updatedEvent)
     .then(() => {
-      document.getElementById("editModal").style.display = "none";
+      modal.style.display = "none";
       showToast("Event updated successfully!");
     })
     .catch((error) => console.error("Error updating event:", error));
