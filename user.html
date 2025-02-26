@@ -28,7 +28,7 @@
         </div>
         <div class="nav-links">
           <li>
-            <a href="" aria-label="Add new event"
+            <a href="#eventForm" aria-label="Add new event"
               ><i class="fas fa-plus"></i> Add Event</a
             >
           </li>
@@ -122,24 +122,6 @@
             </div>
           </div>
 
-          <!-- Filtros -->
-          <div class="filter-controls">
-            <select id="category-filter" aria-label="Filter by category">
-              <option value="all">All Categories</option>
-              <option value="Personal">Personal</option>
-              <option value="Work">Work</option>
-              <option value="Study">Study</option>
-              <option value="Family">Family</option>
-            </select>
-            <input type="date" id="date-filter" aria-label="Filter by date" />
-            <button id="apply-filters" aria-label="Apply filters">
-              <i class="fas fa-filter"></i> Filter
-            </button>
-            <button id="clear-filters" aria-label="Clear filters">
-              <i class="fas fa-times"></i> Clear
-            </button>
-          </div>
-
           <!-- Event lists -->
           <div id="events-container" class="list-view" data-category="all">
             <!-- Events will be dynamically added here -->
@@ -175,17 +157,32 @@
       <p>&copy; 2025 EventFlow. All rights reserved.</p>
     </footer>
 
+    <!-- Modal de edición -->
     <div id="editModal" class="modal">
       <div class="modal-content">
         <span id="closeModal" class="close">&times;</span>
         <h2>Edit Event</h2>
-        <label>Title: <input type="text" id="edit-title" /></label>
-        <label>Date: <input type="date" id="edit-date" /></label>
-        <label>Time: <input type="time" id="edit-time" /></label>
-        <label>Description: <input type="text" id="edit-description" /></label>
-        <label>Category: <input type="text" id="edit-category" /></label>
-
-        <button id="saveEdit">Save</button>
+        <label
+          >Title:
+          <input type="text" id="edit-title" />
+        </label>
+        <label
+          >Date:
+          <input type="date" id="edit-date" />
+        </label>
+        <label
+          >Time:
+          <input type="time" id="edit-time" />
+        </label>
+        <label
+          >Description:
+          <input type="text" id="edit-description" />
+        </label>
+        <label
+          >Category:
+          <input type="text" id="edit-category" />
+        </label>
+        <button id="saveEdit" class="save-edit">Save</button>
       </div>
     </div>
 

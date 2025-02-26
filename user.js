@@ -29,6 +29,11 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
 
+// Asegurarse de que la modal está oculta al cargar
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("editModal").style.display = "none";
+});
+
 // Mostrar mensajes flotantes
 function showToast(message, type = "success") {
   const toast = document.createElement("div");
@@ -83,10 +88,10 @@ onValue(ref(db, "events"), (snapshot) => {
   eventsContainer.innerHTML = "";
   if (!snapshot.exists()) {
     eventsContainer.innerHTML = `
-      <div class="empty-state">
-        <i class="fas fa-calendar-plus fa-3x"></i>
-        <p>No events yet. Click the "Add Event" button to get started!</p>
-      </div>`;
+            <div class="empty-state">
+              <i class="fas fa-calendar-plus fa-3x"></i>
+              <p>No events yet. Click "Add Event" to get started!</p>
+            </div>`;
     return;
   }
 
@@ -99,22 +104,26 @@ onValue(ref(db, "events"), (snapshot) => {
     eventElement.style.borderLeft = `5px solid ${event.color}`;
 
     eventElement.innerHTML = `
-      <div class="event-header">
-        <h3>${event.title}</h3>
-        <button class="edit-btn" data-id="${eventId}"><i class="fa-solid fa-pen-to-square"></i></button>
-        <button class="delete-btn" data-id="${eventId}"><i class="fa-solid fa-trash-alt"></i></button>
-      </div>
-      <p><strong>Date:</strong> ${event.date} at ${event.time}</p>
-      <p><strong>Description:</strong> ${event.description}</p>
-      <p><strong>Category:</strong> ${event.category}</p>
-    `;
+            <div class="event-header">
+              <h3>${event.title}</h3>
+              <button class="edit-btn" data-id="${eventId}">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button class="delete-btn" data-id="${eventId}">
+                <i class="fa-solid fa-trash-alt"></i>
+              </button>
+            </div>
+            <p><strong>Date:</strong> ${event.date} at ${event.time}</p>
+            <p><strong>Description:</strong> ${event.description}</p>
+            <p><strong>Category:</strong> ${event.category}</p>
+          `;
 
     eventsContainer.appendChild(eventElement);
 
-    // Animación
+    // Animación (opcional)
     eventElement.classList.add("fade-in");
 
-    // Eliminar evento con animación
+    // Eliminar evento
     eventElement.querySelector(".delete-btn").addEventListener("click", (e) => {
       const eventId = e.target.closest("button").getAttribute("data-id");
       eventElement.classList.add("fade-out");
@@ -125,7 +134,7 @@ onValue(ref(db, "events"), (snapshot) => {
       }, 500);
     });
 
-    // Editar evento
+    // Editar evento: la modal solo se abre al hacer clic en el botón editar
     eventElement.querySelector(".edit-btn").addEventListener("click", (e) => {
       const eventId = e.target.closest("button").getAttribute("data-id");
       const eventRef = ref(db, `events/${eventId}`);
@@ -141,7 +150,8 @@ onValue(ref(db, "events"), (snapshot) => {
             document.getElementById("edit-description").value =
               event.description;
             document.getElementById("edit-category").value = event.category;
-            document.getElementById("editModal").style.display = "block";
+            // Mostrar la modal solo cuando se haga clic en editar
+            document.getElementById("editModal").style.display = "flex";
             document.getElementById("editModal").dataset.id = eventId;
           }
         },
@@ -151,12 +161,12 @@ onValue(ref(db, "events"), (snapshot) => {
   });
 });
 
-// Cerrar modal de edición
+// Cerrar modal de edición al hacer clic en la "X"
 document.getElementById("closeModal").addEventListener("click", () => {
   document.getElementById("editModal").style.display = "none";
 });
 
-// Cerrar modal al hacer clic fuera de ella
+// Cerrar modal al hacer clic fuera del contenido
 window.addEventListener("click", (e) => {
   const modal = document.getElementById("editModal");
   if (e.target === modal) {

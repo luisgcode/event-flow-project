@@ -2,9 +2,9 @@
 @import url(components/navigation.css);
 @import url(components/login.css);
 @import url(components/footer.css);
-@import url(components/calendar.css);
-@import url(components/about.css);
-@import url(components/addEvent.css);
+
+@import url(pages/home.css);
+@import url(pages/login.css);
 
 /* Reset values */
 * {
@@ -140,121 +140,6 @@ section {
 
 .tab-content.active {
   display: block;
-}
-
-.biometric-option {
-  margin-top: 2rem;
-  text-align: center;
-  border-top: 1px solid #ddd;
-  padding-top: 1.5rem;
-}
-
-#fingerprint-btn {
-  background-color: var(--bg-color);
-  border: 1px solid #ddd;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--border-radius);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  justify-content: center;
-  margin: 1rem auto 0;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-#fingerprint-btn:hover {
-  background-color: #f1f1f1;
-}
-
-.modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.modal-actions button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-#edit-event-btn {
-  background-color: var(--info-color);
-  color: white;
-}
-
-#delete-event-btn {
-  background-color: var(--danger-color);
-  color: white;
-}
-
-/* Chatbot Styles */
-
-.message {
-  margin-bottom: 1rem;
-  display: flex;
-  gap: 0.75rem;
-  align-items: flex-start;
-}
-
-.message.user {
-  flex-direction: row-reverse;
-}
-
-.message i {
-  width: 30px;
-  height: 30px;
-  background-color: var(--primary-light);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.message.user i {
-  background-color: var(--secondary-color);
-}
-
-.message p {
-  background-color: var(--bg-color);
-  padding: 0.75rem;
-  border-radius: var(--border-radius);
-  max-width: 70%;
-}
-
-.message.user p {
-  background-color: var(--primary-color);
-  color: white;
-}
-
-.chat-input-container {
-  display: flex;
-  padding: 1rem;
-  border-top: 1px solid #ddd;
-}
-
-#chat-input {
-  flex: 1;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: var(--border-radius) 0 0 var(--border-radius);
-}
-
-#send-message {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 0 1rem;
-  border-radius: 0 var(--border-radius) var(--border-radius) 0;
-  cursor: pointer;
 }
 
 /* Toast Notifications */
