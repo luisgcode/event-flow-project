@@ -1,18 +1,23 @@
-/* Base Styles */
+/* variables.css */
 :root {
+  /* Paleta de colores */
   --primary-color: #4361ee;
   --primary-dark: #3a56d4;
-  --primary-light: #4895ef;
-  --secondary-color: #f72585;
-  --text-color: #2b2d42;
-  --text-light: #8d99ae;
+  --primary-light: #657ef8;
+  --secondary-color: #6c757d;
+  --text-color: #333333;
+  --text-light: #6c757d;
   --bg-color: #f8f9fa;
   --bg-light: #ffffff;
-  --success-color: #2ecc71;
-  --warning-color: #f39c12;
-  --danger-color: #e74c3c;
-  --info-color: #3498db;
-  --border-radius: 8px;
+
+  /* Colores de estado */
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+
+  /* Elementos de diseño */
+  --border-radius: 5px;
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
 }

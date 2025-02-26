@@ -45,7 +45,6 @@ document.getElementById("eventForm").addEventListener("submit", (e) => {
   const description = document.getElementById("event-description").value;
   const category = document.getElementById("event-category").value;
   const color = document.getElementById("event-color").value;
-  const reminder = document.getElementById("event-reminder").value;
 
   const newEventRef = push(ref(db, "events"));
   set(newEventRef, {
@@ -55,7 +54,6 @@ document.getElementById("eventForm").addEventListener("submit", (e) => {
     description,
     category,
     color,
-    reminder,
   })
     .then(() => {
       document.getElementById("eventForm").reset();
@@ -91,14 +89,13 @@ onValue(ref(db, "events"), (snapshot) => {
 
     eventElement.innerHTML = `
       <div class="event-header">
-        <h3>${event.title}</h3> -
+        <h3>${event.title}</h3> - 
         <button class="edit-btn" data-id="${eventId}"><i class="fa-solid fa-pen-to-square"></i></button>
         <button class="delete-btn" data-id="${eventId}"><i class="fa-solid fa-delete-left"></i></button>
       </div>
       <p><strong>Date:</strong> ${event.date} at ${event.time}</p>
       <p><strong>Description:</strong> ${event.description}</p>
       <p><strong>Category:</strong> ${event.category}</p>
-      <p><strong>Reminder:</strong> ${event.reminder}</p>
     `;
 
     eventsContainer.appendChild(eventElement);
@@ -132,7 +129,6 @@ onValue(ref(db, "events"), (snapshot) => {
             document.getElementById("edit-description").value =
               event.description;
             document.getElementById("edit-category").value = event.category;
-            document.getElementById("edit-reminder").value = event.reminder;
             modal.style.display = "block";
           }
         },
@@ -156,7 +152,6 @@ saveEditBtn.addEventListener("click", () => {
       time: document.getElementById("edit-time").value,
       description: document.getElementById("edit-description").value,
       category: document.getElementById("edit-category").value,
-      reminder: document.getElementById("edit-reminder").value,
     };
 
     update(ref(db, `events/${currentEventId}`), updatedEvent)

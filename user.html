@@ -53,8 +53,8 @@
       <div class="about-section">
         <h2>Welcome!</h2>
         <p>
-          EventFlow is your personal event management assistant. Add events, set
-          reminders, and stay organized with our intuitive interface.
+          EventFlow is your personal event management assistant. Add events and
+          stay organized with our intuitive interface.
         </p>
         <p>
           Use the biometric authentication for secure access to your personal
@@ -64,7 +64,6 @@
 
       <div class="events-container">
         <section class="calendar-section">
-          <!-- Heading -->
           <div class="upper-tab">
             <h2>Your Events</h2>
             <div class="view-controls">
@@ -75,17 +74,9 @@
               >
                 <i class="fas fa-list"></i>
               </button>
-              <button
-                id="grid-view-btn"
-                class="view-btn"
-                aria-label="Grid view"
-              >
-                <i class="fas fa-th"></i>
-              </button>
             </div>
           </div>
 
-          <!-- Filtros -->
           <div class="filter-controls">
             <select id="category-filter" aria-label="Filter by category">
               <option value="all">All Categories</option>
@@ -103,9 +94,7 @@
             </button>
           </div>
 
-          <!-- Event lists -->
           <div id="events-container" class="list-view" data-category="all">
-            <!-- Events will be dynamically added here -->
             <div class="empty-state">
               <i class="fas fa-calendar-plus fa-3x"></i>
               <p>No events yet. Click the "Add Event" button to get started!</p>
@@ -113,7 +102,6 @@
           </div>
         </section>
 
-        <!-- Add events -->
         <section class="event-form-section">
           <h2>Add New Event</h2>
           <form id="eventForm">
@@ -124,21 +112,15 @@
                 id="event-title"
                 placeholder="Enter event title"
                 required
-                aria-required="true"
               />
             </div>
             <div class="form-group">
               <label for="event-date">Date</label>
-              <input
-                type="date"
-                id="event-date"
-                required
-                aria-required="true"
-              />
+              <input type="date" id="event-date" required />
             </div>
             <div class="form-group">
               <label for="event-time">Time</label>
-              <input type="time" id="event-time" aria-label="Event time" />
+              <input type="time" id="event-time" />
             </div>
             <div class="form-group">
               <label for="event-description">Description</label>
@@ -146,12 +128,11 @@
                 id="event-description"
                 placeholder="Enter event details"
                 rows="3"
-                aria-label="Event description"
               ></textarea>
             </div>
             <div class="form-group">
               <label for="event-category">Category</label>
-              <select id="event-category" aria-label="Event category">
+              <select id="event-category">
                 <option value="Personal">Personal</option>
                 <option value="Work">Work</option>
                 <option value="Study">Study</option>
@@ -160,37 +141,17 @@
             </div>
             <div class="form-group">
               <label for="event-color">Color</label>
-              <input
-                type="color"
-                id="event-color"
-                value="#007bff"
-                aria-label="Event color"
-              />
-            </div>
-            <div class="form-group">
-              <label for="event-reminder">Set Reminder</label>
-              <select id="event-reminder" aria-label="Event reminder">
-                <option value="none">None</option>
-                <option value="15">15 minutes before</option>
-                <option value="30">30 minutes before</option>
-                <option value="60">1 hour before</option>
-                <option value="1440">1 day before</option>
-              </select>
+              <input type="color" id="event-color" value="#007bff" />
             </div>
             <div class="form-actions">
-              <button type="button" id="cancel-btn" aria-label="Cancel">
-                Cancel
-              </button>
-              <button type="submit" id="save-btn" aria-label="Save event">
-                Save Event
-              </button>
+              <button type="button" id="cancel-btn">Cancel</button>
+              <button type="submit" id="save-btn">Save Event</button>
             </div>
           </form>
         </section>
       </div>
     </main>
 
-    <!-- footer -->
     <footer>
       <div class="footer-content">
         <div class="footer-links">
@@ -213,18 +174,5 @@
       <p>&copy; 2025 EventFlow. All rights reserved.</p>
     </footer>
     <script type="module" src="user.js"></script>
-    <div id="editModal" class="modal">
-      <div class="modal-content">
-        <span id="closeModal" class="close">&times;</span>
-        <h2>Edit Event</h2>
-        <label>Title: <input type="text" id="edit-title" /></label>
-        <label>Date: <input type="date" id="edit-date" /></label>
-        <label>Time: <input type="time" id="edit-time" /></label>
-        <label>Description: <input type="text" id="edit-description" /></label>
-        <label>Category: <input type="text" id="edit-category" /></label>
-        <label>Reminder: <input type="number" id="edit-reminder" /></label>
-        <button id="saveEdit">Save</button>
-      </div>
-    </div>
   </body>
 </html>
