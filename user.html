@@ -38,18 +38,20 @@
             >
           </li>
           <li>
-            <a href="#" aria-label="About this app"
+            <a href="/about.html" aria-label="About this app"
               ><i class="fas fa-info-circle"></i> About</a
             >
           </li>
-          <button id="logout-btn">Logout</button>
+          <button id="logout-btn">
+            <i class="fas fa-sign-out-alt"></i>Logout
+          </button>
         </div>
       </nav>
     </header>
 
     <main class="container">
       <div class="about-section">
-        <h2>Welcome, Luis.</h2>
+        <h2>Welcome!</h2>
         <p>
           EventFlow is your personal event management assistant. Add events, set
           reminders, and stay organized with our intuitive interface.
@@ -62,6 +64,7 @@
 
       <div class="events-container">
         <section class="calendar-section">
+          <!-- Heading -->
           <div class="upper-tab">
             <h2>Your Events</h2>
             <div class="view-controls">
@@ -82,6 +85,7 @@
             </div>
           </div>
 
+          <!-- Filtros -->
           <div class="filter-controls">
             <select id="category-filter" aria-label="Filter by category">
               <option value="all">All Categories</option>
@@ -99,6 +103,7 @@
             </button>
           </div>
 
+          <!-- Event lists -->
           <div id="events-container" class="list-view" data-category="all">
             <!-- Events will be dynamically added here -->
             <div class="empty-state">
@@ -208,5 +213,18 @@
       <p>&copy; 2025 EventFlow. All rights reserved.</p>
     </footer>
     <script type="module" src="user.js"></script>
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <h2>Edit Event</h2>
+        <label>Title: <input type="text" id="edit-title" /></label>
+        <label>Date: <input type="date" id="edit-date" /></label>
+        <label>Time: <input type="time" id="edit-time" /></label>
+        <label>Description: <input type="text" id="edit-description" /></label>
+        <label>Category: <input type="text" id="edit-category" /></label>
+        <label>Reminder: <input type="number" id="edit-reminder" /></label>
+        <button id="saveEdit">Save</button>
+      </div>
+    </div>
   </body>
 </html>

@@ -5,6 +5,7 @@
 @import url(components/calendar.css);
 @import url(components/about.css);
 @import url(components/addEvent.css);
+@import url(pages/about.css);
 
 /* Reset values */
 * {
@@ -30,10 +31,9 @@ h3,
 h4,
 h5,
 h6 {
-  margin-bottom: 1rem;
   font-weight: 600;
   font-family: "Noto Serif", serif;
-  line-height: 1.2;
+
   text-transform: uppercase;
 }
 
