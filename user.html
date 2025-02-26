@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Flow - Login</title>
     <meta name="author" content="Luis Guaiquirian" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Anaheim:wght@400..800&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anaheim:wght@400..800&family=Noto+Serif:wght@100..900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/main.css" />
@@ -19,38 +19,40 @@
     ></script>
   </head>
   <body>
-    <header>
-      <nav class="main-nav">
+    <header role="banner">
+      <nav class="main-nav" role="navigation" aria-label="Main Navigation">
         <div class="logo">
-          <a href="index.html">
-            <h1><i class="fas fa-calendar-alt"></i> EventFlow</h1>
+          <a href="index.html" aria-label="Go to home page">
+            <h1>
+              <i class="fas fa-calendar-alt" aria-hidden="true"></i> EventFlow
+            </h1>
           </a>
         </div>
-        <div class="nav-links">
+        <ul class="nav-links">
           <li>
             <a href="#" aria-label="View events"
-              ><i class="fas fa-list"></i> Events</a
+              ><i class="fas fa-list" aria-hidden="true"></i> Events</a
             >
           </li>
           <li>
             <a href="#" aria-label="Add new event"
-              ><i class="fas fa-plus"></i> Add Event</a
+              ><i class="fas fa-plus" aria-hidden="true"></i> Add Event</a
             >
           </li>
           <li>
             <a href="/about.html" aria-label="About this app"
-              ><i class="fas fa-info-circle"></i> About</a
+              ><i class="fas fa-info-circle" aria-hidden="true"></i> About</a
             >
           </li>
-          <button id="logout-btn">
-            <i class="fas fa-sign-out-alt"></i>Logout
-          </button>
-        </div>
+        </ul>
+        <button id="logout-btn" role="button" aria-label="Log out">
+          <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout
+        </button>
       </nav>
     </header>
 
-    <main class="container">
-      <div class="about-section">
+    <main class="container" role="main">
+      <section class="about-section">
         <h2>Welcome!</h2>
         <p>
           EventFlow is your personal event management assistant. Add events and
@@ -60,99 +62,90 @@
           Use the biometric authentication for secure access to your personal
           events.
         </p>
-      </div>
+      </section>
 
-      <div class="events-container">
-        <section class="calendar-section">
-          <div class="upper-tab">
-            <h2>Your Events</h2>
-            <div class="view-controls">
-              <button
-                id="list-view-btn"
-                class="view-btn active"
-                aria-label="List view"
-              >
-                <i class="fas fa-list"></i>
-              </button>
-            </div>
+      <section class="calendar-section">
+        <h2>Your Events</h2>
+        <div class="filter-controls">
+          <label for="category-filter">Filter by Category:</label>
+          <select id="category-filter" aria-label="Filter events by category">
+            <option value="all">All Categories</option>
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+            <option value="Study">Study</option>
+            <option value="Family">Family</option>
+          </select>
+
+          <label for="date-filter">Filter by Date:</label>
+          <input
+            type="date"
+            id="date-filter"
+            aria-label="Filter events by date"
+          />
+
+          <button id="apply-filters" role="button">Apply Filters</button>
+          <button id="clear-filters" role="button">Clear Filters</button>
+        </div>
+
+        <div id="events-container" class="list-view" role="list">
+          <div class="empty-state" role="alert">
+            <i class="fas fa-calendar-plus fa-3x" aria-hidden="true"></i>
+            <p>No events yet. Click the "Add Event" button to get started!</p>
           </div>
+        </div>
+      </section>
 
-          <div class="filter-controls">
-            <select id="category-filter" aria-label="Filter by category">
-              <option value="all">All Categories</option>
+      <section class="event-form-section">
+        <h2>Add New Event</h2>
+        <form id="eventForm" aria-labelledby="form-title">
+          <div class="form-group">
+            <label for="event-title">Event Title</label>
+            <input
+              type="text"
+              id="event-title"
+              placeholder="Enter event title"
+              required
+              aria-required="true"
+            />
+          </div>
+          <div class="form-group">
+            <label for="event-date">Date</label>
+            <input type="date" id="event-date" required aria-required="true" />
+          </div>
+          <div class="form-group">
+            <label for="event-time">Time</label>
+            <input type="time" id="event-time" />
+          </div>
+          <div class="form-group">
+            <label for="event-description">Description</label>
+            <textarea
+              id="event-description"
+              placeholder="Enter event details"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="event-category">Category</label>
+            <select id="event-category">
               <option value="Personal">Personal</option>
               <option value="Work">Work</option>
               <option value="Study">Study</option>
               <option value="Family">Family</option>
             </select>
-            <input type="date" id="date-filter" aria-label="Filter by date" />
-            <button id="apply-filters" aria-label="Apply filters">
-              <i class="fas fa-filter"></i> Filter
-            </button>
-            <button id="clear-filters" aria-label="Clear filters">
-              <i class="fas fa-times"></i> Clear
-            </button>
           </div>
-
-          <div id="events-container" class="list-view" data-category="all">
-            <div class="empty-state">
-              <i class="fas fa-calendar-plus fa-3x"></i>
-              <p>No events yet. Click the "Add Event" button to get started!</p>
-            </div>
+          <div class="form-group">
+            <label for="event-color">Color</label>
+            <input type="color" id="event-color" value="#007bff" />
           </div>
-        </section>
-
-        <section class="event-form-section">
-          <h2>Add New Event</h2>
-          <form id="eventForm">
-            <div class="form-group">
-              <label for="event-title">Event Title</label>
-              <input
-                type="text"
-                id="event-title"
-                placeholder="Enter event title"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="event-date">Date</label>
-              <input type="date" id="event-date" required />
-            </div>
-            <div class="form-group">
-              <label for="event-time">Time</label>
-              <input type="time" id="event-time" />
-            </div>
-            <div class="form-group">
-              <label for="event-description">Description</label>
-              <textarea
-                id="event-description"
-                placeholder="Enter event details"
-                rows="3"
-              ></textarea>
-            </div>
-            <div class="form-group">
-              <label for="event-category">Category</label>
-              <select id="event-category">
-                <option value="Personal">Personal</option>
-                <option value="Work">Work</option>
-                <option value="Study">Study</option>
-                <option value="Family">Family</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="event-color">Color</label>
-              <input type="color" id="event-color" value="#007bff" />
-            </div>
-            <div class="form-actions">
-              <button type="button" id="cancel-btn">Cancel</button>
-              <button type="submit" id="save-btn">Save Event</button>
-            </div>
-          </form>
-        </section>
-      </div>
+          <div class="form-actions">
+            <button type="button" id="cancel-btn">Cancel</button>
+            <button type="submit" id="save-btn">Save Event</button>
+          </div>
+        </form>
+      </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
       <div class="footer-content">
         <div class="footer-links">
           <a href="#">Policies</a>
@@ -160,19 +153,20 @@
           <a href="#">Help</a>
         </div>
         <div class="footer-socials">
-          <a href="#" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" aria-label="Twitter">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
+          <a href="#" aria-label="Facebook"
+            ><i class="fab fa-facebook-f" aria-hidden="true"></i
+          ></a>
+          <a href="#" aria-label="Twitter"
+            ><i class="fab fa-twitter" aria-hidden="true"></i
+          ></a>
+          <a href="#" aria-label="Instagram"
+            ><i class="fab fa-instagram" aria-hidden="true"></i
+          ></a>
         </div>
       </div>
       <p>&copy; 2025 EventFlow. All rights reserved.</p>
     </footer>
+
     <script type="module" src="user.js"></script>
   </body>
 </html>

@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Flow - Login</title>
     <meta name="author" content="Luis Guaiquirian" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Anaheim:wght@400..800&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anaheim:wght@400..800&family=Noto+Serif:ital,wght@0,100..900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/main.css" />
@@ -20,50 +20,94 @@
   </head>
   <body>
     <header>
-      <nav class="main-nav" aria-label="Main navigation">
+      <nav class="main-nav" role="navigation" aria-label="Main navigation">
         <div class="logo">
-          <a href="index.html">
-            <h1><i class="fas fa-calendar-alt"></i> EventFlow</h1>
+          <a href="index.html" aria-label="Go to homepage">
+            <h1>
+              <i class="fas fa-calendar-alt" aria-hidden="true"></i> EventFlow
+            </h1>
           </a>
         </div>
         <ul class="nav-links">
           <li>
-            <a href="#login-form" aria-label="View events"
-              ><i class="fas fa-list"></i> Events</a
-            >
+            <a href="#login-form" aria-label="View events">
+              <i class="fas fa-list" aria-hidden="true"></i> Events
+            </a>
           </li>
           <li>
-            <a href="#login-form" aria-label="Add new event"
-              ><i class="fas fa-plus"></i> Add Event</a
-            >
+            <a href="#login-form" aria-label="Add new event">
+              <i class="fas fa-plus" aria-hidden="true"></i> Add Event
+            </a>
           </li>
           <li>
-            <a href="#login-form" aria-label="About this app"
-              ><i class="fas fa-info-circle"></i> About</a
-            >
+            <a href="#login-form" aria-label="About this app">
+              <i class="fas fa-info-circle" aria-hidden="true"></i> About
+            </a>
           </li>
         </ul>
       </nav>
     </header>
 
     <main class="container">
-      <div class="form-container">
-        <h2>Login to EventFlow</h2>
-        <form id="login-form">
+      <section class="form-container">
+        <h2 id="login-heading">Login to EventFlow</h2>
+        <form id="login-form" aria-labelledby="login-heading">
           <div class="input-group">
             <label for="email">Email</label>
-            <input type="email" id="email" required />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              aria-required="true"
+              autocomplete="email"
+            />
           </div>
           <div class="input-group">
             <label for="password">Password</label>
-            <input type="password" id="password" required />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              aria-required="true"
+              autocomplete="current-password"
+            />
           </div>
-          <button type="submit" id="submit-btn">Login</button>
-          <button id="register-btn">Register</button>
-          <p id="error-message"></p>
+          <button type="submit" id="submit-btn" aria-label="Submit login form">
+            Login
+          </button>
+          <button id="register-btn" aria-label="Register new account">
+            Register
+          </button>
+          <p id="error-message" role="alert" aria-live="polite"></p>
         </form>
-      </div>
+      </section>
     </main>
+
+    <footer>
+      <div class="footer-content">
+        <ul class="footer-links">
+          <li><a href="#" aria-label="View policies">Policies</a></li>
+          <li>
+            <a href="#" aria-label="View terms of service">Terms of Service</a>
+          </li>
+          <li><a href="#" aria-label="Get help">Help</a></li>
+        </ul>
+        <div class="footer-socials">
+          <a href="#" aria-label="Visit our Facebook page">
+            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+          </a>
+          <a href="#" aria-label="Visit our Twitter profile">
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a href="#" aria-label="Visit our Instagram profile">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <p>&copy; 2025 EventFlow. All rights reserved.</p>
+    </footer>
 
     <script type="module" src="auth.js"></script>
   </body>
